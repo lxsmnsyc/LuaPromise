@@ -1,6 +1,5 @@
 # LuaPromise
 ES6 Promise/A+ implementation in Lua
-https://promisesaplus.com/
 
 ## Demo
 ```lua
@@ -125,3 +124,5 @@ Promise:race({1, 4, 9}):after(function (value)
     print(value)
 end)
 ```
+## Author Notes
+This does not strictly follow the spec defined from the ECMA-262, the Promise/A+ website nor the w3c spec. The behavior defined in this script is solely based on reversed engineering and other tests.
