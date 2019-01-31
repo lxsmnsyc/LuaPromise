@@ -104,25 +104,34 @@ end)
 ```
 ### Promise:resolve and Promise:reject
 ```lua
-Promise:resolve(1997)
+Promise.resolve(1997)
 :after(function (value)
     print(value)
 end)
-Promise:reject("Oopsie!")
+Promise.reject("Oopsie!")
 :catch(function (value)
     print("caught", value)
 end)
 ```
 ### Promise:race and Promise:all
 ```lua
-Promise:all({25, 32, Promise:resolve(48)}):after(function (values)
+Promise.all({25, 32, Promise:resolve(48)}):after(function (values)
     for k, v in ipairs(values) do 
         print(v)
     end
 end)
-Promise:race({1, 4, 9}):after(function (value)
+Promise.race({1, 4, 9}):after(function (value)
     print(value)
 end)
 ```
 ## Author Notes
 This does not strictly follow the spec defined from the ECMA-262, the Promise/A+ website nor the w3c spec. The behavior defined in this script is solely based on reversed engineering and other tests.
+
+
+## Changelog
+1.1
+- Fixed promises with the fulfillment handler returning a pending promise not resolving after the pending promise has been resolved.
+- all, race, resolve and reject are now class methods rather than object methods.
+- added two new object methods: resolve, which resolves the promise with a value and reject, which rejects the promise with a value.
+1.0
+- Release
