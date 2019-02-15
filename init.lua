@@ -573,6 +573,7 @@ P.resolve = newResolve
 P.reject = newReject
 P.all = all 
 P.race = race
+P.is = isPromise
 
 M.__call = new
 M.__index = {
